@@ -12,6 +12,7 @@ rm -f "$TMPFILE"
 
 HEIGHT=0
 IFS="\n"
+
 while read -r LINE
 do
     WIDTH=0
@@ -34,15 +35,18 @@ done
 exec 4>&-
 IFS=" "
 tput clear
+
 cat <&3 | shuf | while read -r HEIGHT WIDTH SYMBOL
 do
     tput cup $HEIGHT $WIDTH
     printf "\\$(printf "%o" "0x$SYMBOL")"
     sleep $TIMEOUT
 done
+
 exec 3<&-
 
 tput cup $(tput lines) $(tput cols)
+
 while true
 do
     sleep $TIMEOUT
