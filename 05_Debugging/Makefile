@@ -9,6 +9,6 @@ test: range
 	cmp gt_2.txt test_2.txt
 
 clean:
-	rm range
-	rm test_1.txt
-	rm test_2.txt
+	rm -f range
+	rm -f test_1.txt
+	rm -f test_2.txt
